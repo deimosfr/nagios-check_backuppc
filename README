@@ -1,0 +1,48 @@
+#===============================================================================
+#
+#         FILE:  check_backuppc_hosts.pl
+#
+#        USAGE:  ./check_backuppc_hosts -p path_to_BackupPC_serverMesg -h
+#					-p : set path of BackupPC_serverMesg binary file (default is /usr/share/backuppc/bin/BackupPC_serverMesg)
+#					-h : specify a hostname from backuppc to check (if unset, all hosts will be checked)
+#
+#  DESCRIPTION:  Nagios plugins to check backups from BackupPC software
+#
+#      OPTIONS:  -p, -b, -h
+# REQUIREMENTS:  ---
+#         BUGS:  ---
+#        NOTES:  ---
+#      LICENSE:  This Nagios module is under GPLv2 License
+#       AUTHOR:  Pierre Mavro (), pierre@mavro.fr
+#      COMPANY:  
+#      VERSION:  0.3
+#      CREATED:  04/04/2009
+#===============================================================================
+#
+# Installation (nagios client side) :
+# - Copy the script in your nagios plugins directory (usualy /usr/lib/nagios/plugins)
+# - Set good rights (700 for nagios user)
+# - Add those two lines in your suoders file :
+#   - Cmnd_Alias  GETHOSTS = /usr/share/backuppc/bin/BackupPC_serverMesg (or replace by your $bppccmd value bellow)
+#   - nagios  ALL=(backuppc) NOPASSWD: GETHOSTS
+#
+#===============================================================================
+#
+# History :
+#
+# v0.3 :
+# + Adding possibility to check only one host with -b
+# = Improved help menu and options
+# = Improved returned messages to nagios
+#
+# v0.2 :
+# + Added number of backuped hosts in status information column
+# + Added number of hosts errors in status information column
+# + Added an unknow host detection (from host backuppc file)
+# = Check hosts method optimized ((x hosts) * (time to check) faster)
+# = Improved security on sudoers command
+#
+# v0.1 :
+# + First version
+#
+#===============================================================================
