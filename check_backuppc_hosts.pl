@@ -104,7 +104,7 @@ sub check_hosts_status
        		chomp $_;
 	       	my $current_host;
 	        # Add host to hosts_list
-       		if (/"(\S+)" => {/)
+       		if (/"(\S+)" => \{/)
        		{
 	        	push @hosts_list, $1;
            		$current_host=$1;
